@@ -1,0 +1,43 @@
+{
+  "slug": "few-shot-prompting",
+  "title": "用範例教 AI：少樣本提示",
+  "category": "提示設計",
+  "summary": "提供幾組輸入與輸出，讓 AI 理解你期待的分類方式與格式。",
+  "updated": "2026-11-14",
+  "tags": [
+    "Few-shot",
+    "提示設計"
+  ],
+  "sections": [
+    {
+      "heading": "核心概念",
+      "paragraphs": [
+        "少樣本提示（Few-shot prompting）是在提示中放入少量輸入與輸出的示例，展示要完成的任務與回答格式。這些示例放在當次提示裡，不代表重新訓練模型。"
+      ]
+    },
+    {
+      "heading": "實作範例",
+      "paragraphs": [
+        "本站自訂示例：請只輸出「課業」或「生活」。\n輸入：整理課堂筆記 → 輸出：課業\n輸入：列出買菜清單 → 輸出：生活\n輸入：複習期中考範圍 → 輸出：？\n預期標籤為「課業」；此處是教學示例，未聲稱已執行模型測試。"
+      ]
+    },
+    {
+      "heading": "常見誤解",
+      "paragraphs": [
+        "示例應與任務相關且彼此一致。少樣本提示不是正確率保證；如果分類界線模糊，先定義標籤，再測試容易混淆的輸入。"
+      ]
+    },
+    {
+      "heading": "動手練習",
+      "paragraphs": [
+        "先自訂兩個分類及兩組範例，再準備五筆未出現在示例中的輸入。比較有範例與無範例的結果，逐筆檢查標籤是否合理及是否只輸出指定格式。不要將同一筆資料同時當範例與測試題。"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "title": "Meta · Prompt engineering：Zero- and few-shot prompting",
+      "url": "https://dev.meta.ai/llama/docs/how-to-guides/prompting"
+    }
+  ]
+}

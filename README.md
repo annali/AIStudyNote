@@ -4,13 +4,16 @@
 
 Repository：https://github.com/annali/AIStudyNote
 
-公開網站：https://ai-notebook-anna-2026.singinghedgehog2.chatgpt.site
+正式網站（GitHub 提交後自動發布）：https://annali.github.io/AIStudyNote/
+
+展示鏡像（手動更新）：https://ai-notebook-anna-2026.singinghedgehog2.chatgpt.site
 
 ## 專案亮點
 
 - 首頁有主題篩選、全文搜尋及無結果提示。
-- 四篇獨立筆記，涵蓋提示設計、RAG、工作流程與 Agent、專案協作規則。
+- 五篇獨立筆記，涵蓋提示設計、RAG、工作流程與 Agent、專案協作規則。
 - `AGENTS.md` 規定內容、風格、檔案責任與開發驗證步驟。
+- 內容管理頁提供新增表單、GitHub 修改與刪除入口；需登入並提交後才保存。
 - 每篇 JSON 自動生成 HTML，新增文章不用複製頁面或修改首頁。
 - 無第三方建置套件、無 API 金鑰、無後端需求。
 - 外部技術概念附原始論文或官方來源；本文為 AI 輔助整理的教學內容，非官方翻譯。
@@ -66,3 +69,15 @@ SUBMISSION.md              作業繳交文字
 ## AI 使用說明
 
 本專案由使用者選定主題，透過 AI 協助撰寫規則、程式與初版教學筆記。網站範例與練習為教學設計，未聲稱已執行真實模型測試。繳交前請閱讀、理解並依課程規定揭露 AI 使用方式。
+
+## 實際管理內容
+
+在網站「內容管理」頁填表產生 JSON，按「複製 JSON」，再點 GitHub 新增連結，貼到新檔案中並 Commit changes。修改與刪除入口會前往對應 GitHub 頁面，由有寫入權限的帳號確認提交。表單尚未提交的內容不會保存到網站。
+
+GitHub main 提交 → Actions 驗證 → 建置 dist → GitHub Pages 發布。正式持續更新網址是 `https://annali.github.io/AIStudyNote/`；Sites 是手動更新的鏡像，不會隨 GitHub 自動同步。
+
+## 擴充實證與驗證
+
+[第五篇筆記的實際擴充紀錄](docs/extension-demo.md) 記錄使用指令、來源與檔案變更。
+
+執行 `python3 scripts/check.py`，會在暫存專案驗證新增、修改、刪除如何同步影響獨立頁、首頁與索引，也確認格式不符會阻止建置。GitHub Actions 會先執行此檢查，再建置部署。這些檢查不會修改真正的筆記。

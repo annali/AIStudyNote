@@ -4,6 +4,7 @@ from datetime import date
 from html import escape as e
 from pathlib import Path
 from urllib.parse import urlsplit
+from manage import render as render_manage
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'dist'
 CATEGORIES = ['提示設計', '知識檢索', 'AI 協作']
@@ -35,7 +36,7 @@ def validate(path):
     return n
 
 def shell(title,body,p='./',active='筆記總覽',desc='AI 學習筆記庫，將每次理解整理成可累積的知識。'):
-    return f'''<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="{e(desc,quote=True)}"><meta name="theme-color" content="#183e36"><title>{e(title)} · AI 學習筆記庫</title><link rel="stylesheet" href="{p}assets/style.css"></head><body><a class="skip" href="#main">跳至主要內容</a><div class="layout"><aside class="sidebar"><a class="brand" href="{p}index.html"><span class="brand-icon">a<span>i</span>.</span><span>AI 學習筆記庫<small>THE LEARNING NOTEBOOK</small></span></a><p class="side-label">我的知識空間</p><nav aria-label="主要導覽"><a class="nav-item {'active' if active=='筆記總覽' else ''}" href="{p}index.html"><span aria-hidden="true">▦</span> 筆記總覽 <span class="nav-arrow">↗</span></a><a class="nav-item {'active' if active=='專案規則' else ''}" href="{p}rules.html"><span aria-hidden="true">≡</span> 專案規則</a></nav><div class="side-note"><span class="tiny-dot"></span> 持續累積，慢慢理解<p>把今天學會的一點，<br>變成明天用得上的知識。</p></div><div class="side-foot">BUILT WITH CLEAR RULES<br><a href="{p}AGENTS.md">閱讀 AGENTS.md ↗</a></div></aside><div class="workspace"><header class="topbar"><span>學習空間 <span class="slash">/</span> {active}</span><span class="edition">PERSONAL KNOWLEDGE BASE <span class="avatar">學</span></span></header><main id="main">{body}</main><footer><span>AI 學習筆記庫</span><span>每一份筆記，都是下一次理解的起點。</span><a href="{p}rules.html">內容與協作規則 ↗</a></footer></div></div></body></html>'''
+    return f'''<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="{e(desc,quote=True)}"><meta name="theme-color" content="#183e36"><title>{e(title)} · AI 學習筆記庫</title><link rel="stylesheet" href="{p}assets/style.css"></head><body><a class="skip" href="#main">跳至主要內容</a><div class="layout"><aside class="sidebar"><a class="brand" href="{p}index.html"><span class="brand-icon">a<span>i</span>.</span><span>AI 學習筆記庫<small>THE LEARNING NOTEBOOK</small></span></a><p class="side-label">我的知識空間</p><nav aria-label="主要導覽"><a class="nav-item {'active' if active=='筆記總覽' else ''}" href="{p}index.html"><span aria-hidden="true">▦</span> 筆記總覽 <span class="nav-arrow">↗</span></a><a class="nav-item {'active' if active=='專案規則' else ''}" href="{p}rules.html"><span aria-hidden="true">≡</span> 專案規則</a><a class="nav-item {'active' if active=='內容管理' else ''}" href="{p}manage.html"><span aria-hidden="true">＋</span> 內容管理</a></nav><div class="side-note"><span class="tiny-dot"></span> 持續累積，慢慢理解<p>把今天學會的一點，<br>變成明天用得上的知識。</p></div><div class="side-foot">BUILT WITH CLEAR RULES<br><a href="{p}AGENTS.md">閱讀 AGENTS.md ↗</a></div></aside><div class="workspace"><header class="topbar"><span>學習空間 <span class="slash">/</span> {active}</span><span class="edition">PERSONAL KNOWLEDGE BASE <span class="avatar">學</span></span></header><main id="main">{body}</main><footer><span>AI 學習筆記庫</span><span>每一份筆記，都是下一次理解的起點。</span><a href="{p}rules.html">內容與協作規則 ↗</a></footer></div></div></body></html>'''
 
 def card(n,i):
     tags=''.join('<span># '+e(t)+'</span>' for t in n['tags'])
@@ -63,9 +64,12 @@ def build():
     rules='''<div class="article-header"><p class="eyebrow">THE WAY WE BUILD</p><h1>讓 AI 知道，<br>下一篇該怎麼繼續。</h1><p class="article-summary">網站是一份成果；專案規則讓成果能夠持續累積。</p></div><article class="article-body rules-body"><section><h2><span>01</span>先有規則，再有內容</h2><p>AGENTS.md 定義專案目的、視覺風格、文章格式、檔案責任與完成判準。AI 在開始前閱讀文件，就能知道該延續哪些設計。</p><a class="primary-button" href="AGENTS.md">閱讀完整 AGENTS.md ↗</a></section><section><h2><span>02</span>一篇檔案，就是一篇新筆記</h2><p>複製 templates/note.json 到 content/，填入標題、摘要、分類、標籤、日期、四個章節與參考來源。固定章節為：核心概念、實作範例、常見誤解、動手練習。</p><pre><code>content/few-shot-prompting.json
 + python3 scripts/build.py
 → notes/few-shot-prompting.html
-→ 自動更新首頁與搜尋索引</code></pre></section><section><h2><span>03</span>把模糊要求，變成可檢查的步驟</h2><p>建置器會檢查檔名、slug、日期、分類、標籤、章節與來源格式。內容以純文字輸出，樣式共用；一般新增文章不需要修改 HTML 或 CSS。</p><p>自動驗證格式後，仍要人工核對資料來源與閱讀體驗，確認搜尋、分類及手機畫面能正常使用。</p></section><section><h2><span>04</span>下次，可以這樣請 AI 幫忙</h2><blockquote>請先閱讀 AGENTS.md，依照模板新增「少樣本提示」筆記，分類為提示設計。核對官方來源，包含四個固定章節，執行建置後說明檢查結果。</blockquote><p>同一套方式可以持續新增主題，也能維持一致的風格、來源品質與內容結構。</p></section></article>'''
+→ 自動更新首頁與搜尋索引</code></pre></section><section><h2><span>03</span>把模糊要求，變成可檢查的步驟</h2><p>建置器會檢查檔名、slug、日期、分類、標籤、章節與來源格式。內容以純文字輸出，樣式共用；一般新增文章不需要修改 HTML 或 CSS。</p><p>自動驗證格式後，仍要人工核對資料來源與閱讀體驗，確認搜尋、分類及手機畫面能正常使用。</p></section><section><h2><span>04</span>下次，可以這樣請 AI 幫忙</h2><blockquote>請先閱讀 AGENTS.md，依照模板新增「少樣本提示」筆記，分類為提示設計。核對官方來源，包含四個固定章節，執行建置後說明檢查結果。</blockquote><p>同一套方式可以持續新增主題，也能維持一致的風格、來源品質與內容結構。</p><p>已實際依規則新增第五篇「少樣本提示」筆記。你也可以使用<a href="manage.html">內容管理頁</a>新增、修改與刪除筆記；登入 GitHub 提交後，自動更新正式 GitHub Pages 網站。</p><a class="primary-button" href="extension-demo.html">查看實際擴充紀錄 ↗</a></section></article>'''
+    (OUT/'manage.html').write_text(shell('內容管理',render_manage(notes, HEADINGS, CATEGORIES),active='內容管理'))
     (OUT/'rules.html').write_text(shell('專案規則',rules,active='專案規則'))
     (OUT/'search-index.json').write_text(json.dumps([{'slug':n['slug'],'text':' '.join([n['title'],n['summary'],*n['tags'],*[p for s in n['sections'] for p in s['paragraphs']]])} for n in notes],ensure_ascii=False))
+    demo = (ROOT/'docs/extension-demo.md').read_text()
+    (OUT/'extension-demo.html').write_text(shell('實際擴充紀錄','<div class="article-header"><p class="eyebrow">FROM RULES TO A REAL PAGE</p><h1>第五篇筆記，如何長出來？</h1></div><article class="article-body rules-body"><pre class="demo-record">'+e(demo)+'</pre><a class="primary-button" href="notes/few-shot-prompting.html">閱讀新增的筆記 ↗</a></article>',active='專案規則'))
     (OUT/'.nojekyll').touch()
     print(f'建置成功：{count} 篇筆記、首頁、規則頁、搜尋索引 → {OUT}')
 if __name__ == '__main__': build()
