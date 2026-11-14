@@ -14,7 +14,7 @@ https://github.com/annali/AIStudyNote
 
 ## 3. 網頁連結
 
-待公開發布並核實後填入。
+https://ai-notebook-anna-2026.singinghedgehog2.chatgpt.site
 
 ## 4. AGENTS.md
 

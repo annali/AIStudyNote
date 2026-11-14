@@ -4,6 +4,8 @@
 
 Repository：https://github.com/annali/AIStudyNote
 
+公開網站：https://ai-notebook-anna-2026.singinghedgehog2.chatgpt.site
+
 ## 專案亮點
 
 - 首頁有主題篩選、全文搜尋及無結果提示。
