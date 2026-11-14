@@ -1,0 +1,43 @@
+{
+  "slug": "agents-and-workflows",
+  "title": "工作流程與 Agent，有什麼不同？",
+  "category": "AI 協作",
+  "summary": "用任務路徑是否預先固定，理解兩種 AI 系統的設計。",
+  "updated": "2026-11-14",
+  "tags": [
+    "Agent",
+    "Workflow"
+  ],
+  "sections": [
+    {
+      "heading": "核心概念",
+      "paragraphs": [
+        "依 Anthropic 這篇文章的分類，工作流程（Workflow）沿著程式預先定義的路徑執行；Agent 則讓模型動態決定流程與工具使用。這是本文採用的區分，不是所有人的唯一用法。"
+      ]
+    },
+    {
+      "heading": "實作範例",
+      "paragraphs": [
+        "自訂示例：收集筆記 → 產生摘要 → 人工檢查，是固定流程。若系統能依問題決定是否查資料、選哪個工具、何時停止，則更接近此處的 Agent 概念。"
+      ]
+    },
+    {
+      "heading": "常見誤解",
+      "paragraphs": [
+        "更自主不一定更適合。Anthropic 建議從簡單方案開始，因為增加自主性也可能增加成本、延遲與錯誤累積。"
+      ]
+    },
+    {
+      "heading": "動手練習",
+      "paragraphs": [
+        "寫下你整理一份讀書摘要的四個步驟，圈出可事先固定的部分。再列出一個需要臨場決策的情況，檢查它是否真的需要模型自主選擇工具。"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "title": "Anthropic · Building effective agents（2024 概念文章）",
+      "url": "https://www.anthropic.com/research/building-effective-agents"
+    }
+  ]
+}

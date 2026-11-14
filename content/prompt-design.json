@@ -1,0 +1,43 @@
+{
+  "slug": "prompt-design",
+  "title": "把需求寫清楚：提示設計入門",
+  "category": "提示設計",
+  "summary": "把模糊的提問，整理成有任務、背景與輸出格式的指令。",
+  "updated": "2026-11-14",
+  "tags": [
+    "Prompt",
+    "入門"
+  ],
+  "sections": [
+    {
+      "heading": "核心概念",
+      "paragraphs": [
+        "提示設計（Prompt engineering）是安排提供給語言模型的指令與背景。清楚說明任務、限制及格式，有助於讓輸出更貼近需求。"
+      ]
+    },
+    {
+      "heading": "實作範例",
+      "paragraphs": [
+        "示例：請將下列課堂筆記整理成三點摘要。對象是剛接觸 AI 的學生，每點不超過 50 字；只使用提供的內容，資料不足就說明。筆記：〔貼上文字〕。"
+      ]
+    },
+    {
+      "heading": "常見誤解",
+      "paragraphs": [
+        "寫得長不代表寫得好。互相矛盾的要求仍會造成困難；清楚的提示也不能保證所有事實正確。"
+      ]
+    },
+    {
+      "heading": "動手練習",
+      "paragraphs": [
+        "挑一段 200 字課堂筆記，比較「幫我摘要」與上面的示例指令。自行檢查是否符合三點、字數與不添加資料三項條件，記錄不符之處後修改指令。"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "title": "Meta · Prompt engineering",
+      "url": "https://dev.meta.ai/llama/docs/how-to-guides/prompting"
+    }
+  ]
+}

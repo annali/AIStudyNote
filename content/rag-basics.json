@@ -1,0 +1,43 @@
+{
+  "slug": "rag-basics",
+  "title": "先找資料，再回答：認識 RAG",
+  "category": "知識檢索",
+  "summary": "理解檢索增強生成，分清楚找到資料與回答正確的差別。",
+  "updated": "2026-11-14",
+  "tags": [
+    "RAG",
+    "知識庫"
+  ],
+  "sections": [
+    {
+      "heading": "核心概念",
+      "paragraphs": [
+        "檢索增強生成（Retrieval-Augmented Generation, RAG）結合資料檢索與文字生成。原始 RAG 論文讓模型搭配外部文件索引，而不是只依賴參數中的知識。"
+      ]
+    },
+    {
+      "heading": "實作範例",
+      "paragraphs": [
+        "教學示例：先從三份課程講義找出與問題相關的段落，再將段落與問題一起提供給模型，要求它依段落回答並標出來源。這是流程示意，本站沒有實際執行檢索模型。"
+      ]
+    },
+    {
+      "heading": "常見誤解",
+      "paragraphs": [
+        "找到相似段落，不等於段落能支持答案。實作時仍需要核對引用是否支持主張；找不到資料時，應明確承認不足。"
+      ]
+    },
+    {
+      "heading": "動手練習",
+      "paragraphs": [
+        "準備三段課堂文字，手動選出能回答「作業要交什麼」的段落。逐句標記答案依據；若某句沒有依據，刪除或標示無法確認。這個手動練習用來理解流程，不是 RAG 系統效能測試。"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "title": "Lewis et al. · Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "url": "https://arxiv.org/abs/2005.11401"
+    }
+  ]
+}

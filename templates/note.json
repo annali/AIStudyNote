@@ -1,0 +1,15 @@
+{
+  "slug": "your-note-slug",
+  "title": "筆記標題",
+  "category": "提示設計",
+  "summary": "用一到兩句描述讀者能學到什麼。",
+  "updated": "2026-11-14",
+  "tags": ["入門"],
+  "sections": [
+    {"heading": "核心概念", "paragraphs": ["以自己的話解釋概念。"]},
+    {"heading": "實作範例", "paragraphs": ["提供具體範例，標示示例。"]},
+    {"heading": "常見誤解", "paragraphs": ["解釋適用範圍與限制。"]},
+    {"heading": "動手練習", "paragraphs": ["列出操作與自我檢查標準。"]}
+  ],
+  "sources": [{"title": "填入實際閱讀的官方來源標題", "url": "https://example.com/replace-with-real-source"}]
+}

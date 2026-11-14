@@ -1,0 +1,43 @@
+{
+  "slug": "project-rules",
+  "title": "讓下一次協作更快：寫好 AGENTS.md",
+  "category": "AI 協作",
+  "summary": "把檔案位置、內容格式與驗證方式，寫成能反覆使用的專案規則。",
+  "updated": "2026-11-14",
+  "tags": [
+    "AGENTS.md",
+    "專案規則"
+  ],
+  "sections": [
+    {
+      "heading": "核心概念",
+      "paragraphs": [
+        "本專案的 AGENTS.md 是 AI 協作說明書，記錄目的、檔案責任、視覺風格、內容契約與完成判準。工具是否自動讀取規則取決於工具本身；也可以明確要求 AI 先閱讀。"
+      ]
+    },
+    {
+      "heading": "實作範例",
+      "paragraphs": [
+        "本站示例指令：先閱讀 AGENTS.md，複製 templates/note.json，新增一篇 few-shot-prompting 筆記，核對來源後執行 python3 scripts/build.py。建置器會建立獨立頁，並更新首頁與搜尋資料。"
+      ]
+    },
+    {
+      "heading": "常見誤解",
+      "paragraphs": [
+        "「請做得好看、內容正確」不足以重複執行。應補上色彩、章節名稱、檔名、來源與檢查命令；規則也需要隨專案維護。"
+      ]
+    },
+    {
+      "heading": "動手練習",
+      "paragraphs": [
+        "打開本站規則，找出新增筆記要修改哪個資料夾、需要哪些章節、最後執行哪個指令。能從文件直接回答這三題，就代表規則具有可操作性。"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "title": "本專案 · AGENTS.md",
+      "url": "../AGENTS.md"
+    }
+  ]
+}
