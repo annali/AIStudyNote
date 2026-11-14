@@ -31,4 +31,9 @@ search-index.json 的全文搜尋資料
 - 新文章：notes/few-shot-prompting.html
 - 原始資料：GitHub 的 content/few-shot-prompting.json
 - 發布執行：GitHub Repository → Actions → Build and deploy notebook
-- 實際驗證結果將依工作流程及瀏覽器檢查填入，未成功前不宣稱完成。
+- 成功的 GitHub Actions 執行：https://github.com/annali/AIStudyNote/actions/runs/43587355669
+- 對應提交：19e6aeedbf2932d4c73dc2d9fedf8d96822ae3ec
+- 發布結果：success。正式網址：https://annali.github.io/AIStudyNote/
+- 本機 scripts/check.py 三項檢查皆通過：內部連結、新增修改刪除同步、無效內容阻止建置。
+- 瀏覽器已確認管理表單產生符合格式的 JSON 及正確新檔案路徑；產生後清楚顯示尚未儲存。
+- 修改、刪除的資料同步以暫存專案驗證，沒有刪除真正的公開筆記作測試。

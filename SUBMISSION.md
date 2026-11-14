@@ -39,3 +39,7 @@ https://github.com/annali/AIStudyNote
 內容管理頁可產生新筆記 JSON，並提供 GitHub 修改、刪除入口；登入並提交後，GitHub Actions 會檢查格式、重建網站並發布到 GitHub Pages。管理權限由 GitHub 控制，沒有把私密金鑰放進網頁。
 
 驗證執行紀錄見 Repository 的 Actions 頁面；新增、修改、刪除的建置結果由 scripts/check.py 在隔離的暫存專案測試。
+
+## 自動發布成功紀錄
+
+[首次新版成功發布的 GitHub Actions 執行](https://github.com/annali/AIStudyNote/actions/runs/43587355669)，對應提交 19e6aeedbf2932d4c73dc2d9fedf8d96822ae3ec，結果為 success。正式網站已由原本四篇擴充為五篇。

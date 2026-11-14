@@ -7,6 +7,7 @@
 - Python 3.9+ 標準函式庫建置；HTML、CSS、原生 JavaScript 顯示。不要為一般文章新增套件或框架。
 - `content/*.json`：唯一文章來源，每個檔案一篇。
 - `templates/note.json`：新增文章起點；模板不會被發布。
+- `scripts/check.py`：在隔離暫存專案驗證新增、修改、刪除的輸出同步與內部連結，發布前執行。
 - `scripts/build.py`：驗證資料，產生首頁、每篇獨立 HTML 與搜尋索引。
 - `assets/style.css`、`assets/app.js`：共用樣式及首頁搜尋／篩選。
 - `assets/manage.js`：管理表單、複製 JSON 及 GitHub 新增入口。管理操作需登入 GitHub 並擁有寫入權限。
@@ -41,7 +42,7 @@
 ## 新增一篇筆記的標準流程
 1. 閱讀這份規則與一篇同類筆記。
 2. 複製 `templates/note.json` 至 `content/<slug>.json`，填完所有欄位及來源。
-3. 執行 `python3 scripts/build.py`；若驗證失敗，修正來源 JSON，不修改產物。
+3. 執行 `python3 scripts/check.py` 及 `python3 scripts/build.py`；若驗證失敗，修正來源 JSON，不修改產物。
 4. 執行 `python3 -m http.server 8000 --directory dist`，開啟 `http://localhost:8000`。
 5. 檢查新文章出現在首頁、分類與搜尋；檢查獨立頁、返回首頁、來源連結、手機排版、鍵盤操作、零結果提示。
 6. 提交文章與必要的共用檔案；不要提交 dist。發布後確認頁面可瀏覽，未驗證的步驟要如實報告。
