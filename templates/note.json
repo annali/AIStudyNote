@@ -1,15 +1,47 @@
 {
   "slug": "your-note-slug",
-  "title": "筆記標題",
+  "title": "填入清楚的學習問題或概念",
   "category": "提示設計",
-  "summary": "用一到兩句描述讀者能學到什麼。",
-  "updated": "2026-11-14",
-  "tags": ["入門"],
-  "sections": [
-    {"heading": "核心概念", "paragraphs": ["以自己的話解釋概念。"]},
-    {"heading": "實作範例", "paragraphs": ["提供具體範例，標示示例。"]},
-    {"heading": "常見誤解", "paragraphs": ["解釋適用範圍與限制。"]},
-    {"heading": "動手練習", "paragraphs": ["列出操作與自我檢查標準。"]}
+  "summary": "寫出讀者能學到的操作與判斷，不重複標題。",
+  "updated": "2026-11-15",
+  "tags": [
+    "入門"
   ],
-  "sources": [{"title": "填入實際閱讀的官方來源標題", "url": "https://example.com/replace-with-real-source"}]
+  "sections": [
+    {
+      "heading": "核心概念",
+      "paragraphs": [
+        "說明定義，首次出現的術語附中文與英文。",
+        "說明適用情境，並區分一個容易混淆的概念或限制。"
+      ]
+    },
+    {
+      "heading": "實作範例",
+      "paragraphs": [
+        "教學示例（若未執行，不可稱為實測）。輸入／準備：填入實際文字、檔案或資料。",
+        "操作：填入能照著執行的提示或步驟。",
+        "預期結果：填入具體輸出或可觀察的結構。檢查：說明如何核對結果。"
+      ]
+    },
+    {
+      "heading": "常見誤解",
+      "paragraphs": [
+        "誤解：具體寫出讀者可能相信的錯誤想法。",
+        "更正與做法：說明為何不成立，以及如何避免。"
+      ]
+    },
+    {
+      "heading": "動手練習",
+      "paragraphs": [
+        "新情境：提供不同於示例的題目。產物：說明讀者要完成哪份文字、表格或檔案。",
+        "通過條件一：可自行檢查的條件。通過條件二：另一個可自行檢查的條件。"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "title": "填入實際閱讀的官方來源標題",
+      "url": "https://example.com/replace-with-real-source"
+    }
+  ]
 }

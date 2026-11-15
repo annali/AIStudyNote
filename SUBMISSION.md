@@ -43,3 +43,9 @@ https://github.com/annali/AIStudyNote
 ## 自動發布成功紀錄
 
 [首次新版成功發布的 GitHub Actions 執行](https://github.com/annali/AIStudyNote/actions/runs/43587355669)，對應提交 19e6aeedbf2932d4c73dc2d9fedf8d96822ae3ec，結果為 success。正式網站已由原本四篇擴充為五篇。
+
+## AGENTS.md 品質補強（2026-11-15）
+
+規則已具體定義：讀者先備知識、三種分類的邊界、四個章節各自的品質要求與正反例、來源衝突／資訊不足處理、主題重複時新增或修改的判斷、刪除依賴、失敗回復及逐項驗收。
+
+五篇既有筆記與模板同步補上完整範例（輸入、操作、預期結果、檢查）及練習產物與通過條件；詳見 [內容品質對照](docs/content-review.md)。這讓規則與實際網頁內容可以互相核對。

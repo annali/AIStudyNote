@@ -30,7 +30,8 @@ def check():
                 target=(page.parent/unquote(u.path)).resolve()
                 assert target.is_relative_to(out.resolve()) and target.exists(),(page,href)
         print('PASS: 所有內部頁面、管理入口與資源路徑')
-        original=json.loads((root/'content/few-shot-prompting.json').read_text())
+        seed=sorted((root/'content').glob('*.json'))[0]
+        original=json.loads(seed.read_text())
         original.update(slug='lifecycle-check',title='內容生命週期檢查')
         note=root/'content/lifecycle-check.json'
         note.write_text(json.dumps(original,ensure_ascii=False))
@@ -47,10 +48,17 @@ def check():
         assert 'lifecycle-check' not in (out/'index.html').read_text()
         assert 'lifecycle-check' not in (out/'search-index.json').read_text()
         print('PASS: 新增、修改、刪除同步更新文章、首頁與搜尋索引')
+        demo_note=root/'content/few-shot-prompting.json'
+        if demo_note.exists():
+            saved=demo_note.read_bytes()
+            demo_note.unlink();run(root)
+            assert 'href="notes/few-shot-prompting.html"' not in (out/'extension-demo.html').read_text()
+            demo_note.write_bytes(saved);run(root)
+            print('PASS: 移除示範筆記時，歷史紀錄頁不留下失效連結')
         before=(out/'index.html').read_bytes()
-        bad=json.loads((root/'content/few-shot-prompting.json').read_text())
+        bad=json.loads(seed.read_text())
         bad['sections']=[]
-        (root/'content/few-shot-prompting.json').write_text(json.dumps(bad))
+        seed.write_text(json.dumps(bad))
         run(root,success=False)
         assert before == (out/'index.html').read_bytes()
         print('PASS: 無效內容阻止建置且保留前次產物')

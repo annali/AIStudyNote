@@ -5,7 +5,8 @@ REPO = 'https://github.com/annali/AIStudyNote'
 
 def render(notes, headings, categories):
     rows = ''.join(f'''<li class="manage-row"><div><a href="notes/{n['slug']}.html">{e(n['title'])}</a><small>{e(n['category'])} · {n['updated']}</small></div><div class="row-actions"><a href="{REPO}/edit/main/content/{n['slug']}.json">修改 ↗</a><a class="delete-link" href="{REPO}/delete/main/content/{n['slug']}.json">刪除 ↗</a></div></li>''' for n in notes)
-    fields = ''.join(f'<label>{h}<textarea name="section{i}" rows="4" required></textarea></label>' for i, h in enumerate(headings))
+    hints = {'核心概念':'分段說明定義、使用情境與容易混淆的邊界。','實作範例':'標示示例或實測，包含輸入、操作、預期結果與檢查。','常見誤解':'指出一個具體誤解，解釋原因並給出正確做法。','動手練習':'提供新情境、要交出的產物與至少兩項通過條件。'}
+    fields = ''.join(f'<label>{h}<textarea name="section{i}" rows="4" placeholder="{hints[h]}" required></textarea></label>' for i, h in enumerate(headings))
     options = ''.join(f'<option>{c}</option>' for c in categories)
     return f'''<div class="article-header"><p class="eyebrow">WRITE · REVIEW · PUBLISH</p><h1>讓筆記，繼續生長。</h1><p class="article-summary">新增、修改與刪除內容，保存到你的 GitHub Repository。</p></div>
 <div class="workflow-notice"><strong>儲存方式：GitHub 提交</strong><p>表單先產生 JSON；按「複製 JSON」後，再按 GitHub 新增連結，在 GitHub 貼上內容並按 Commit changes。修改與刪除也在 GitHub 確認。需要登入有寫入權限的帳號。提交成功後，GitHub Actions 會重新建置並發布。</p><p>正式自動更新網址：<a href="https://annali.github.io/AIStudyNote/">annali.github.io/AIStudyNote/ ↗</a>。Sites 展示鏡像不會自動同步。表單不會自動儲存，離開前請複製內容。</p><a href="{REPO}/actions">查看發布進度 ↗</a> · <a href="rules.html">閱讀內容規則</a></div>
