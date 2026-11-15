@@ -48,6 +48,14 @@ def check():
         assert 'lifecycle-check' not in (out/'index.html').read_text()
         assert 'lifecycle-check' not in (out/'search-index.json').read_text()
         print('PASS: 新增、修改、刪除同步更新文章、首頁與搜尋索引')
+        original.update(slug='中文筆記測試',sources=[{'title':'格式相容測試','url':'http://www.wikipedia.org/'}])
+        unicode_note=root/'content/中文筆記測試.json'
+        unicode_note.write_text(json.dumps(original,ensure_ascii=False))
+        run(root)
+        assert (out/'notes/中文筆記測試.html').exists()
+        assert 'http://www.wikipedia.org/' in (out/'notes/中文筆記測試.html').read_text()
+        unicode_note.unlink();run(root)
+        print('PASS: 中文網址名稱與 HTTP 來源可建置')
         demo_note=root/'content/few-shot-prompting.json'
         if demo_note.exists():
             saved=demo_note.read_bytes()

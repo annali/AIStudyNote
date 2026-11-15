@@ -16,7 +16,7 @@ def validate(path):
         if not ok: raise ValueError(f'{path.name}: {msg}')
     for k in ['slug','title','category','summary','updated']:
         check(isinstance(n.get(k),str) and n[k].strip(), f'{k} 必須是非空字串')
-    check(re.fullmatch(r'[a-z]+(?:-[a-z0-9]+)*',n['slug']), 'slug 格式錯誤')
+    check(re.fullmatch(r'[^\W_]+(?:-[^\W_]+)*',n['slug']), 'slug 格式錯誤')
     check(path.stem == n['slug'], '檔名必須等於 slug')
     check(n['category'] in CATEGORIES, '無效分類')
     check(re.fullmatch(r'\d{4}-\d{2}-\d{2}', n['updated']), '日期格式錯誤')
@@ -32,7 +32,7 @@ def validate(path):
     for s in n['sources']:
         check(isinstance(s,dict) and all(isinstance(s.get(k),str) and s[k].strip() for k in ['title','url']), '來源需要標題與網址')
         u=urlsplit(s['url'])
-        check((u.scheme == 'https' and u.netloc and u.hostname != 'example.com') or s['url'] == '../AGENTS.md', '無效來源網址或模板網址未替換')
+        check((u.scheme in ('http', 'https') and u.netloc and u.hostname != 'example.com') or s['url'] == '../AGENTS.md', '無效來源網址或模板網址未替換')
     return n
 
 def shell(title,body,p='./',active='筆記總覽',desc='AI 學習筆記庫，將每次理解整理成可累積的知識。'):
